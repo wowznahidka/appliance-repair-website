@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Appliance Repair Service Requests | Appliance Repair Co.</title>
+<meta name="description" content="Request appliance repair service for refrigerators, washers, dryers, dishwashers, ovens and more. Check ZIP code availability and submit a service request online or by phone.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://example.com/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Appliance Repair Service Requests">
+<meta property="og:description" content="Request appliance repair service for refrigerators, washers, dryers, dishwashers, ovens and more household appliances.">
+<meta property="og:url" content="https://example.com/">
+<meta property="og:site_name" content="Appliance Repair Co.">
+
+<!-- Favicon (inline SVG, no external image dependency) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2314213D'/%3E%3Crect x='16' y='10' width='32' height='44' rx='4' fill='none' stroke='%23FF6B35' stroke-width='3'/%3E%3Ccircle cx='32' cy='22' r='4' fill='%23FF6B35'/%3E%3Cline x1='20' y1='36' x2='44' y2='36' stroke='%23FF6B35' stroke-width='3'/%3E%3Cline x1='20' y1='44' x2='44' y2='44' stroke='%23FF6B35' stroke-width='3'/%3E%3C/svg%3E">
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#14213D">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<!-- ================= HEADER ================= -->
+<header class="site-header" id="top">
+  <div class="container header-inner">
+    <a href="#top" class="logo" aria-label="Appliance Repair Co. home">
+      <svg class="logo-icon" width="36" height="36" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+        <rect width="64" height="64" rx="12" fill="#14213D"/>
+        <rect x="16" y="10" width="32" height="44" rx="4" fill="none" stroke="#FF6B35" stroke-width="3"/>
+        <circle cx="32" cy="22" r="4" fill="#FF6B35"/>
+        <line x1="20" y1="36" x2="44" y2="36" stroke="#FF6B35" stroke-width="3"/>
+        <line x1="20" y1="44" x2="44" y2="44" stroke="#FF6B35" stroke-width="3"/>
+      </svg>
+      <span class="logo-text" id="header-company-name">Appliance Repair Co.</span>
+    </a>
+
+    <nav class="main-nav" id="main-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#service-area">Service Area</a></li>
+        <li><a href="#warranty">Warranty Claims</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <a href="tel:" id="header-call-btn" class="btn btn-outline call-link" data-track="PhoneClick">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.4 21 3 13.6 3 4.6c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z" fill="#14213D"/></svg>
+        <span>Call Now</span>
+      </a>
+      <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile nav panel -->
+  <div class="mobile-nav" id="mobile-nav" hidden>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#service-area">Service Area</a></li>
+      <li><a href="#warranty">Warranty Claims</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="tel:" class="mobile-call-link">Call Now</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="main-content">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <h1>Appliance Repair in Your Area</h1>
+        <p class="hero-sub">Request service for refrigerators, washers, dryers, dishwashers, ovens and other household appliances. Service availability is confirmed based on your ZIP code.</p>
+        <div class="hero-actions">
+          <a href="#booking" class="btn btn-accent btn-lg" data-track="Schedule">Book a Service</a>
+          <a href="tel:" class="btn btn-outline-light btn-lg call-link" data-track="PhoneClick">Call Now</a>
+        </div>
+        <ul class="hero-benefits">
+          <li>Convenient online service request</li>
+          <li>ZIP-code based availability check</li>
+          <li>Warranty claim information accepted</li>
+          <li>Phone and online booking</li>
+        </ul>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 420 420" width="100%" height="100%">
+          <defs>
+            <linearGradient id="heroGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#1E3A5F"/>
+              <stop offset="1" stop-color="#14213D"/>
+            </linearGradient>
+          </defs>
+          <circle cx="210" cy="210" r="190" fill="url(#heroGrad)"/>
+          <!-- Fridge -->
+          <rect x="70" y="90" width="110" height="220" rx="10" fill="#F8F9FB"/>
+          <rect x="70" y="90" width="110" height="70" rx="10" fill="#EDEFF4"/>
+          <rect x="150" y="105" width="8" height="35" rx="4" fill="#14213D"/>
+          <rect x="150" y="180" width="8" height="90" rx="4" fill="#14213D"/>
+          <!-- Washer -->
+          <rect x="220" y="180" width="130" height="130" rx="10" fill="#F8F9FB"/>
+          <circle cx="285" cy="248" r="42" fill="none" stroke="#14213D" stroke-width="6"/>
+          <circle cx="285" cy="248" r="26" fill="none" stroke="#FF6B35" stroke-width="5"/>
+          <rect x="230" y="192" width="14" height="8" rx="2" fill="#14213D"/>
+          <rect x="252" y="192" width="14" height="8" rx="2" fill="#14213D"/>
+          <!-- Technician wrench badge -->
+          <circle cx="322" cy="120" r="34" fill="#FF6B35"/>
+          <path d="M310 108a10 10 0 0114 14l-24 24-8-8 22-22a10 10 0 00-4-8z" fill="#14213D"/>
+          <circle cx="308" cy="130" r="4" fill="#14213D"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ZIP CHECKER ================= -->
+  <section class="zip-checker" id="zip-checker">
+    <div class="container">
+      <div class="zip-card">
+        <h2>Check Service Availability</h2>
+        <p>Enter your ZIP code to see whether service requests are currently accepted in your area.</p>
+        <form id="zip-form" class="zip-form" novalidate>
+          <div class="zip-input-row">
+            <label for="zip-input" class="visually-hidden">Enter ZIP Code</label>
+            <input type="text" id="zip-input" name="zip" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" placeholder="Enter ZIP Code" autocomplete="postal-code" aria-describedby="zip-result">
+            <button type="submit" class="btn btn-accent">Check Availability</button>
+          </div>
+          <div id="zip-result" class="zip-result" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SERVICES ================= -->
+  <section class="services" id="services">
+    <div class="container">
+      <h2 class="section-title">Appliance Services</h2>
+      <p class="section-sub">We accept service requests for the following appliance types. Availability for a specific brand or model is confirmed when your request is reviewed.</p>
+      <div class="card-grid" id="services-grid">
+        <!-- Cards injected identically here for static + JS fallback -->
+        <article class="service-card">
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><rect x="10" y="4" width="28" height="40" rx="4" fill="none" stroke="#14213D" stroke-width="2.5"/><line x1="10" y1="20" x2="38" y2="20" stroke="#14213D" stroke-width="2.5"/><circle cx="32" cy="12" r="1.8" fill="#FF6B35"/><circle cx="32" cy="28" r="1.8" fill="#FF6B35"/></svg>
+          </div>
+          <h3>Refrigerator Repair</h3>
+          <p>Service requests for cooling issues, leaks, unusual noises and other common refrigerator problems.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><rect x="8" y="6" width="32" height="36" rx="4" fill="none" stroke="#14213D" stroke-width="2.5"/><circle cx="24" cy="26" r="10" fill="none" stroke="#14213D" stroke-width="2.5"/><circle cx="24" cy="26" r="4" fill="none" stroke="#FF6B35" stroke-width="2"/><circle cx="14" cy="12" r="1.6" fill="#FF6B35"/></svg>
+          </div>
+          <h3>Washer Repair</h3>
+          <p>Service requests for washing machines that won't drain, spin, fill or complete a cycle properly.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><rect x="8" y="6" width="32" height="36" rx="4" fill="none" stroke="#14213D" stroke-width="2.5"/><circle cx="24" cy="26" r="10" fill="none" stroke="#14213D" stroke-width="2.5"/><path d="M24 20a6 6 0 016 6" stroke="#FF6B35" stroke-width="2" fill="none"/><circle cx="14" cy="12" r="1.6" fill="#FF6B35"/></svg>
+          </div>
+          <h3>Dryer Repair</h3>
+          <p>Service requests for dryers with heating problems, long cycle times or unusual noises.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><rect x="8" y="4" width="32" height="40" rx="4" fill="none" stroke="#14213D" stroke-width="2.5"/><rect x="13" y="10" width="22" height="6" rx="1.5" fill="none" stroke="#FF6B35" stroke-width="2"/><line x1="13" y1="26" x2="35" y2="26" stroke="#14213D" stroke-width="2"/><line x1="13" y1="34" x2="35" y2="34" stroke="#14213D" stroke-width="2"/></svg>
+          </div>
+          <h3>Dishwasher Repair</h3>
+          <p>Service requests for dishwashers that leak, don't drain, or don't clean dishes properly.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><rect x="6" y="8" width="36" height="32" rx="4" fill="none" stroke="#14213D" stroke-width="2.5"/><rect x="12" y="14" width="24" height="16" rx="2" fill="none" stroke="#FF6B35" stroke-width="2"/><circle cx="14" cy="35" r="1.6" fill="#14213D"/><circle cx="20" cy="35" r="1.6" fill="#14213D"/></svg>
+          </div>
+          <h3>Oven Repair</h3>
+          <p>Service requests for ovens with heating issues, temperature inconsistency or control problems.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><rect x="6" y="16" width="36" height="24" rx="4" fill="none" stroke="#14213D" stroke-width="2.5"/><circle cx="14" cy="24" r="2.4" fill="none" stroke="#FF6B35" stroke-width="2"/><circle cx="24" cy="24" r="2.4" fill="none" stroke="#FF6B35" stroke-width="2"/><circle cx="34" cy="24" r="2.4" fill="none" stroke="#FF6B35" stroke-width="2"/><line x1="10" y1="16" x2="10" y2="8" stroke="#14213D" stroke-width="2.5"/><line x1="38" y1="16" x2="38" y2="8" stroke="#14213D" stroke-width="2.5"/></svg>
+          </div>
+          <h3>Range Repair</h3>
+          <p>Service requests for cooktop burners, ignition problems and range control issues.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><rect x="12" y="4" width="24" height="40" rx="4" fill="none" stroke="#14213D" stroke-width="2.5"/><line x1="12" y1="24" x2="36" y2="24" stroke="#14213D" stroke-width="2.5"/><path d="M24 10v8M20 14h8M24 30v8M20 34h8" stroke="#FF6B35" stroke-width="2"/></svg>
+          </div>
+          <h3>Freezer Repair</h3>
+          <p>Service requests for freezers with frost buildup, cooling problems or door seal issues.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="#14213D" stroke-width="2.5"/><path d="M18 24a6 6 0 0112 0" stroke="#FF6B35" stroke-width="2.5" fill="none"/><circle cx="24" cy="24" r="2.2" fill="#14213D"/></svg>
+          </div>
+          <h3>Other Appliances</h3>
+          <p>Have a different household appliance? Submit a request and we'll confirm whether we can help.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= COMMON PROBLEMS ================= -->
+  <section class="problems">
+    <div class="container">
+      <h2 class="section-title">Common Problems We Get Asked About</h2>
+      <div class="problem-grid">
+        <div class="problem-item">Appliance not turning on</div>
+        <div class="problem-item">Unusual noises</div>
+        <div class="problem-item">Water leaks</div>
+        <div class="problem-item">Not heating</div>
+        <div class="problem-item">Not cooling</div>
+        <div class="problem-item">Error codes</div>
+        <div class="problem-item">Poor performance</div>
+        <div class="problem-item">Intermittent operation</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= HOW IT WORKS ================= -->
+  <section class="how-it-works">
+    <div class="container">
+      <h2 class="section-title">How It Works</h2>
+      <ol class="steps">
+        <li class="step">
+          <span class="step-number">1</span>
+          <h3>Submit a request</h3>
+          <p>Tell us about your appliance and the problem using the online form or by phone.</p>
+        </li>
+        <li class="step">
+          <span class="step-number">2</span>
+          <h3>Confirm service details</h3>
+          <p>We review your ZIP code, appliance type and schedule to confirm the details of your request.</p>
+        </li>
+        <li class="step">
+          <span class="step-number">3</span>
+          <h3>Schedule the visit</h3>
+          <p>A visit is scheduled based on availability in your area and technician schedules.</p>
+        </li>
+        <li class="step">
+          <span class="step-number">4</span>
+          <h3>Receive service information</h3>
+          <p>You'll be contacted with appointment details and any additional information needed.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ================= WARRANTY & INSURANCE ================= -->
+  <section class="warranty" id="warranty">
+    <div class="container warranty-inner">
+      <div class="warranty-copy">
+        <h2 class="section-title">Warranty and Insurance Claims</h2>
+        <p>If your appliance repair may be covered by a home warranty or insurance claim, you can include the provider name and claim number in your service request. Coverage, authorization and reimbursement depend on the terms of your individual plan.</p>
+        <ul class="warranty-notes">
+          <li>Submitting a claim number does not guarantee coverage.</li>
+          <li>Please confirm authorization with your provider before your appointment.</li>
+          <li>Provider logos are not displayed here without permission.</li>
+        </ul>
+      </div>
+      <div class="warranty-art" aria-hidden="true">
+        <svg viewBox="0 0 200 200" width="100%" height="100%">
+          <rect x="20" y="20" width="160" height="160" rx="16" fill="#EDEFF4"/>
+          <path d="M100 40l50 20v35c0 38-22 62-50 70-28-8-50-32-50-70V60z" fill="none" stroke="#14213D" stroke-width="4"/>
+          <path d="M80 100l14 14 26-30" fill="none" stroke="#FF6B35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= BRANDS ================= -->
+  <section class="brands">
+    <div class="container">
+      <h2 class="section-title">Brands We May Service</h2>
+      <div id="brands-content" class="brands-content">
+        <!-- Populated by script.js from config.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SERVICE AREA ================= -->
+  <section class="service-area" id="service-area">
+    <div class="container">
+      <h2 class="section-title">Service Area</h2>
+      <div class="service-area-card">
+        <p><strong id="area-city-state">Your City, ST</strong></p>
+        <p id="area-text">We accept service requests in and around Your City, ST. Enter your ZIP code below to check availability.</p>
+        <div id="area-zip-list" class="area-zip-list"></div>
+        <p class="fine-print">Service availability can vary by appliance type, location and schedule.</p>
+        <a href="#zip-checker" class="btn btn-outline">Check Your ZIP Code</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= BOOKING FORM ================= -->
+  <section class="booking" id="booking">
+    <div class="container">
+      <h2 class="section-title">Request Service</h2>
+      <p class="section-sub">This is a two-step form. Step 1 takes less than a minute.</p>
+
+      <form id="booking-form" class="booking-form" novalidate>
+        <!-- Honeypot field (hidden from real users) -->
+        <div class="honeypot" aria-hidden="true">
+          <label for="company-website">Leave this field empty</label>
+          <input type="text" id="company-website" name="company_website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <!-- Progress indicator -->
+        <div class="form-progress" aria-hidden="true">
+          <span class="progress-step active" data-step-indicator="1">1</span>
+          <span class="progress-line"></span>
+          <span class="progress-step" data-step-indicator="2">2</span>
+        </div>
+
+        <!-- STEP 1 -->
+        <fieldset class="form-step" id="form-step-1" data-step="1">
+          <legend>Basic Information</legend>
+
+          <div class="form-field">
+            <label for="f-zip">ZIP Code <span class="req">*</span></label>
+            <input type="text" id="f-zip" name="zip" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" required autocomplete="postal-code">
+            <span class="field-error" id="err-zip" role="alert"></span>
+          </div>
+
+          <div class="form-field">
+            <label for="f-appliance">Appliance Type <span class="req">*</span></label>
+            <select id="f-appliance" name="appliance" required>
+              <option value="">Select an appliance</option>
+            </select>
+            <span class="field-error" id="err-appliance" role="alert"></span>
+          </div>
+
+          <div class="form-field">
+            <label for="f-phone">Phone Number <span class="req">*</span></label>
+            <input type="tel" id="f-phone" name="phone" required autocomplete="tel" placeholder="(555) 555-0123">
+            <span class="field-error" id="err-phone" role="alert"></span>
+          </div>
+
+          <button type="button" class="btn btn-accent btn-lg" id="step1-continue">Continue</button>
+        </fieldset>
+
+        <!-- STEP 2 -->
+        <fieldset class="form-step" id="form-step-2" data-step="2" hidden>
+          <legend>Service Details</legend>
+
+          <div class="form-field">
+            <label for="f-name">Full Name <span class="req">*</span></label>
+            <input type="text" id="f-name" name="name" required autocomplete="name">
+            <span class="field-error" id="err-name" role="alert"></span>
+          </div>
+
+          <div class="form-field">
+            <label for="f-email">Email <span class="req">*</span></label>
+            <input type="email" id="f-email" name="email" required autocomplete="email">
+            <span class="field-error" id="err-email" role="alert"></span>
+          </div>
+
+          <div class="form-field">
+            <label for="f-address">Service Address <span class="req">*</span></label>
+            <input type="text" id="f-address" name="address" required autocomplete="street-address">
+            <span class="field-error" id="err-address" role="alert"></span>
+          </div>
+
+          <div class="form-field">
+            <label for="f-brand">Brand (if known)</label>
+            <input type="text" id="f-brand" name="brand" autocomplete="off">
+          </div>
+
+          <div class="form-field">
+            <label for="f-problem">Problem Description <span class="req">*</span></label>
+            <textarea id="f-problem" name="problem" rows="4" required></textarea>
+            <span class="field-error" id="err-problem" role="alert"></span>
+          </div>
+
+          <div class="form-field">
+            <label for="f-date">Preferred Date</label>
+            <input type="date" id="f-date" name="preferredDate">
+          </div>
+
+          <div class="form-field">
+            <label for="f-warranty-company">Home Warranty or Insurance Company (optional)</label>
+            <input type="text" id="f-warranty-company" name="warrantyCompany" autocomplete="off">
+          </div>
+
+          <div class="form-field">
+            <label for="f-claim-number">Claim Number (optional)</label>
+            <input type="text" id="f-claim-number" name="claimNumber" autocomplete="off">
+            <span class="field-hint">Submitting a claim number does not guarantee coverage.</span>
+          </div>
+
+          <div class="form-field">
+            <label for="f-photo">Photo Upload (optional)</label>
+            <input type="file" id="f-photo" name="photos" accept="image/jpeg,image/png,image/webp" multiple>
+            <span class="field-hint">Up to 3 photos, JPG/PNG/WEBP, 5MB max each.</span>
+            <span class="field-error" id="err-photo" role="alert"></span>
+          </div>
+
+          <fieldset class="form-field contact-method">
+            <legend>Preferred Contact Method</legend>
+            <label class="radio-label"><input type="radio" name="contactMethod" value="phone" checked> Phone</label>
+            <label class="radio-label"><input type="radio" name="contactMethod" value="email"> Email</label>
+            <label class="radio-label"><input type="radio" name="contactMethod" value="text"> Text</label>
+          </fieldset>
+
+          <div class="form-field checkbox-field" id="sms-consent-field" hidden>
+            <label class="checkbox-label">
+              <input type="checkbox" id="f-sms-consent" name="smsConsent">
+              I agree to receive SMS text messages about my service request. Message and data rates may apply.
+            </label>
+          </div>
+
+          <div class="form-field checkbox-field">
+            <label class="checkbox-label">
+              <input type="checkbox" id="f-privacy-consent" name="privacyConsent" required>
+              I have read and agree to the <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>. <span class="req">*</span>
+            </label>
+            <span class="field-error" id="err-privacy" role="alert"></span>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-outline" id="step2-back">Back</button>
+            <button type="submit" class="btn btn-accent btn-lg" id="submit-request">Submit Request</button>
+          </div>
+        </fieldset>
+
+        <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ================= REVIEWS ================= -->
+  <section class="reviews">
+    <div class="container">
+      <h2 class="section-title">Customer Reviews</h2>
+      <!-- Real, verified customer reviews should be added here once provided by the business. Do not insert invented quotes. -->
+      <div class="reviews-placeholder">
+        <div class="review-placeholder-card">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.7 1.5 6.8L12 17l-6.1 3.5 1.5-6.8L2.2 9l6.9-.7L12 2z" fill="#E7E9EF"/></svg>
+          <p>Verified customer reviews will be added after they are provided by the business.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <div class="accordion" id="faq-accordion">
+
+        <div class="accordion-item">
+          <h3><button type="button" class="accordion-trigger" aria-expanded="false" aria-controls="faq-1">What appliances do you repair?</button></h3>
+          <div class="accordion-panel" id="faq-1" hidden>
+            <p>We accept service requests for refrigerators, washers, dryers, dishwashers, ovens, ranges, freezers and other household appliances. Availability for a specific model is confirmed when your request is reviewed.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3><button type="button" class="accordion-trigger" aria-expanded="false" aria-controls="faq-2">How do I check if my ZIP code is covered?</button></h3>
+          <div class="accordion-panel" id="faq-2" hidden>
+            <p>Use the ZIP Code Checker near the top of this page. Enter your ZIP code and we'll let you know whether service requests are currently accepted in your area.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3><button type="button" class="accordion-trigger" aria-expanded="false" aria-controls="faq-3">Can I submit a home warranty claim number?</button></h3>
+          <div class="accordion-panel" id="faq-3" hidden>
+            <p>Yes. The service request form has optional fields for your warranty or insurance provider name and claim number.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3><button type="button" class="accordion-trigger" aria-expanded="false" aria-controls="faq-4">Does submitting a claim guarantee coverage?</button></h3>
+          <div class="accordion-panel" id="faq-4" hidden>
+            <p>No. Coverage, authorization and reimbursement depend entirely on the terms of your individual plan. Please confirm authorization with your provider.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3><button type="button" class="accordion-trigger" aria-expanded="false" aria-controls="faq-5">How quickly can an appointment be scheduled?</button></h3>
+          <div class="accordion-panel" id="faq-5" hidden>
+            <p>Scheduling depends on availability in your area and current technician schedules. We'll share available times when we confirm your request.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3><button type="button" class="accordion-trigger" aria-expanded="false" aria-controls="faq-6">What information should I prepare?</button></h3>
+          <div class="accordion-panel" id="faq-6" hidden>
+            <p>It helps to have your appliance type, brand, a description of the problem, and any error codes on hand when you submit your request.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3><button type="button" class="accordion-trigger" aria-expanded="false" aria-controls="faq-7">Can I upload a photo of the appliance?</button></h3>
+          <div class="accordion-panel" id="faq-7" hidden>
+            <p>Yes, the service request form allows you to optionally upload up to 3 photos to help describe the issue.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3><button type="button" class="accordion-trigger" aria-expanded="false" aria-controls="faq-8">How will I be contacted?</button></h3>
+          <div class="accordion-panel" id="faq-8" hidden>
+            <p>You'll be contacted using the preferred method you select on the form: phone, email or text.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3><button type="button" class="accordion-trigger" aria-expanded="false" aria-controls="faq-9">Do you provide estimates?</button></h3>
+          <div class="accordion-panel" id="faq-9" hidden>
+            <p>Estimate details are shared when your request is reviewed and can depend on the diagnosis of the issue.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3><button type="button" class="accordion-trigger" aria-expanded="false" aria-controls="faq-10">What areas do you serve?</button></h3>
+          <div class="accordion-panel" id="faq-10" hidden>
+            <p id="faq-area-answer">Enter your ZIP code in the ZIP Code Checker above to confirm whether your area is currently served.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FINAL CTA ================= -->
+  <section class="final-cta">
+    <div class="container final-cta-inner">
+      <h2>Need Help With an Appliance?</h2>
+      <div class="final-cta-actions">
+        <a href="#booking" class="btn btn-accent btn-lg" data-track="Schedule">Request Service</a>
+        <a href="tel:" class="btn btn-outline-light btn-lg call-link" data-track="PhoneClick">Call Now</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer" id="contact">
+  <div class="container footer-inner">
+    <div class="footer-col">
+      <h3 id="footer-company-name">Appliance Repair Co.</h3>
+      <p id="footer-phone"></p>
+      <p id="footer-email"></p>
+    </div>
+    <div class="footer-col">
+      <h3>Service Area</h3>
+      <p id="footer-area"></p>
+      <h3>Hours</h3>
+      <div id="footer-hours"></div>
+    </div>
+    <div class="footer-col">
+      <h3>Legal</h3>
+      <p><a href="privacy.html">Privacy Policy</a></p>
+      <p><a href="terms.html">Terms</a></p>
+    </div>
+  </div>
+  <div class="container footer-disclaimer">
+    <p>This website is for informational purposes and to collect appliance repair service requests. Service availability, scheduling, pricing and warranty/insurance coverage are subject to confirmation. This business is not represented as an official partner, licensee or authorized center of any warranty or insurance provider unless separately and explicitly confirmed.</p>
+  </div>
+</footer>
+
+<!-- Mobile sticky action bar -->
+<div class="mobile-sticky-bar" id="mobile-sticky-bar">
+  <a href="tel:" class="sticky-call call-link" data-track="PhoneClick">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.4 21 3 13.6 3 4.6c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z" fill="currentColor"/></svg>
+    Call Now
+  </a>
+  <a href="#booking" class="sticky-book" data-track="Schedule">Book Service</a>
+</div>
+
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
