@@ -554,6 +554,68 @@
   }
 
   /* ------------------------------------------------------------------
+   * CLICK-TO-BOOK SERVICE CARDS — tap a service, land in the form with
+   * the appliance preselected (cart-like flow, zero extra typing)
+   * ------------------------------------------------------------------ */
+  var SERVICE_TO_OPTION = {
+    "Refrigerator Repair": "Refrigerator",
+    "Washer Repair": "Washer",
+    "Dryer Repair": "Dryer",
+    "Dishwasher Repair": "Dishwasher",
+    "Oven Repair": "Oven / Range",
+    "Range Repair": "Oven / Range",
+    "Freezer Repair": "Freezer",
+    "Other Appliances": "Other"
+  };
+
+  function initClickToBook() {
+    var cards = document.querySelectorAll(".service-card");
+    var select = document.getElementById("f-appliance");
+    if (!cards.length || !select) return;
+
+    cards.forEach(function (card) {
+      var titleEl = card.querySelector("h3");
+      if (!titleEl) return;
+      var option = SERVICE_TO_OPTION[titleEl.textContent.trim()];
+      if (!option) return;
+
+      card.classList.add("is-bookable");
+      card.setAttribute("role", "button");
+      card.setAttribute("tabindex", "0");
+      card.setAttribute("aria-label", "Book " + titleEl.textContent.trim());
+
+      var cta = document.createElement("span");
+      cta.className = "service-card-cta";
+      cta.textContent = "Book this repair →";
+      card.appendChild(cta);
+
+      function pick() {
+        select.value = option;
+        cards.forEach(function (c) { c.classList.remove("selected"); });
+        card.classList.add("selected");
+        track("ServiceCardClick", { appliance: option });
+
+        var picked = document.getElementById("booking-picked");
+        if (picked) {
+          picked.textContent = option + " selected — two quick steps left";
+          picked.hidden = false;
+        }
+        var booking = document.getElementById("booking");
+        if (booking) booking.scrollIntoView({ behavior: "smooth", block: "start" });
+        var zipField = document.getElementById("f-zip");
+        if (zipField && !zipField.value) {
+          setTimeout(function () { zipField.focus({ preventScroll: true }); }, 600);
+        }
+      }
+
+      card.addEventListener("click", pick);
+      card.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(); }
+      });
+    });
+  }
+
+  /* ------------------------------------------------------------------
    * HERO APP DEMO — a phone that books a repair by itself, on loop
    * ------------------------------------------------------------------ */
   function initHeroDemo() {
@@ -799,6 +861,7 @@
     initZipChecker();
     initBookingForm();
     initAccordion();
+    initClickToBook();
     initHeroDemo();
     initInstallBanner();
     initReveal();

@@ -4,7 +4,7 @@
  * static assets, network passthrough for everything else (e.g. form
  * submissions, analytics, external scripts).
  */
-var CACHE_NAME = "appliance-repair-demo-v3";
+var CACHE_NAME = "appliance-repair-demo-v4";
 var PRECACHE_URLS = [
   "./",
   "./index.html",
