@@ -97,7 +97,9 @@
     document.querySelectorAll("#header-company-name, #footer-company-name").forEach(function (el) {
       el.textContent = CFG.shortCompanyName || CFG.companyName || "";
     });
-    document.title = (CFG.companyName || "Appliance Repair") + " | Appliance Repair Service Requests";
+    if (document.body.getAttribute("data-page") !== "careers") {
+      document.title = (CFG.companyName || "Appliance Repair") + " | Appliance Repair Service Requests";
+    }
 
     var footerPhone = document.getElementById("footer-phone");
     if (footerPhone) footerPhone.textContent = CFG.phoneFormatted || "";
@@ -550,6 +552,242 @@
   }
 
   /* ------------------------------------------------------------------
+   * HERO APP DEMO — a phone that books a repair by itself, on loop
+   * ------------------------------------------------------------------ */
+  function initHeroDemo() {
+    var screens = document.querySelectorAll(".demo-screen");
+    if (!screens.length) return;
+
+    var zipText = document.getElementById("demo-zip-text");
+    var zipOk = document.getElementById("demo-zip-ok");
+    var toast = document.getElementById("demo-toast");
+    var washerTile = document.querySelector('.demo-app[data-app="2"]');
+    var DEMO_ZIP = "60614";
+    var timers = [];
+
+    function at(ms, fn) { timers.push(setTimeout(fn, ms)); }
+
+    function show(step) {
+      screens.forEach(function (s) {
+        s.classList.toggle("active", s.getAttribute("data-demo") === String(step));
+      });
+    }
+
+    function runLoop() {
+      timers.forEach(clearTimeout);
+      timers = [];
+
+      // Reset
+      show(1);
+      if (zipText) zipText.textContent = "";
+      if (zipOk) zipOk.classList.remove("show");
+      if (toast) toast.classList.remove("show");
+      if (washerTile) washerTile.classList.remove("selected");
+
+      // Screen 1 — type the ZIP
+      for (var i = 0; i < DEMO_ZIP.length; i++) {
+        (function (idx) {
+          at(600 + idx * 260, function () {
+            if (zipText) zipText.textContent = DEMO_ZIP.slice(0, idx + 1);
+          });
+        })(i);
+      }
+      at(2300, function () { if (zipOk) zipOk.classList.add("show"); });
+
+      // Screen 2 — pick an appliance
+      at(4200, function () { show(2); });
+      at(5100, function () { if (washerTile) washerTile.classList.add("selected"); });
+
+      // Screen 3 — details fill in (CSS transition delays do the work)
+      at(6600, function () { show(3); });
+
+      // Screen 4 — success + notification toast
+      at(10200, function () { show(4); });
+      at(11200, function () { if (toast) toast.classList.add("show"); });
+      at(13800, function () { if (toast) toast.classList.remove("show"); });
+
+      // Loop
+      at(14600, runLoop);
+    }
+
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      show(1);
+      if (zipText) zipText.textContent = DEMO_ZIP;
+      if (zipOk) zipOk.classList.add("show");
+      return;
+    }
+    runLoop();
+  }
+
+  /* ------------------------------------------------------------------
+   * PWA INSTALL BANNER — custom, pretty, dismissible
+   * ------------------------------------------------------------------ */
+  var deferredInstallPrompt = null;
+
+  function initInstallBanner() {
+    var banner = document.getElementById("install-banner");
+    if (!banner) return;
+    var installBtn = document.getElementById("install-banner-btn");
+    var dismissBtn = document.getElementById("install-banner-dismiss");
+    var subText = document.getElementById("install-banner-sub");
+
+    var DISMISS_KEY = "pwa-banner-dismissed";
+    var isStandalone =
+      (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches) ||
+      window.navigator.standalone === true;
+
+    if (isStandalone) return;
+    try { if (localStorage.getItem(DISMISS_KEY)) return; } catch (e) { /* private mode */ }
+
+    function showBanner() {
+      banner.hidden = false;
+      track("InstallBannerShown", {});
+    }
+
+    function hideBanner(remember) {
+      banner.hidden = true;
+      if (remember) {
+        try { localStorage.setItem(DISMISS_KEY, "1"); } catch (e) { /* ignore */ }
+      }
+    }
+
+    // Chromium browsers: real install prompt
+    window.addEventListener("beforeinstallprompt", function (e) {
+      e.preventDefault();
+      deferredInstallPrompt = e;
+      setTimeout(showBanner, 4000);
+    });
+
+    // iOS Safari: no install prompt API — show gentle instructions instead
+    var isIos = /iphone|ipad|ipod/i.test(navigator.userAgent);
+    var isSafari = /safari/i.test(navigator.userAgent) && !/crios|fxios|chrome/i.test(navigator.userAgent);
+    if (isIos && isSafari) {
+      if (subText) subText.textContent = "Tap Share, then “Add to Home Screen” — book repairs in one tap.";
+      if (installBtn) installBtn.hidden = true;
+      setTimeout(showBanner, 6000);
+    }
+
+    if (installBtn) {
+      installBtn.addEventListener("click", function () {
+        if (!deferredInstallPrompt) { hideBanner(true); return; }
+        deferredInstallPrompt.prompt();
+        deferredInstallPrompt.userChoice.then(function (choice) {
+          track("InstallPromptResult", { outcome: choice.outcome });
+          deferredInstallPrompt = null;
+          hideBanner(choice.outcome === "accepted");
+        });
+      });
+    }
+    if (dismissBtn) {
+      dismissBtn.addEventListener("click", function () { hideBanner(true); });
+    }
+  }
+
+  /* ------------------------------------------------------------------
+   * SCROLL REVEAL — subtle rise-in for cards
+   * ------------------------------------------------------------------ */
+  function initReveal() {
+    if (!("IntersectionObserver" in window)) return;
+    var targets = document.querySelectorAll(
+      ".service-card, .why-card, .step, .perk-card, .problem-item"
+    );
+    if (!targets.length) return;
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    targets.forEach(function (el, idx) {
+      el.classList.add("reveal");
+      el.style.transitionDelay = (idx % 4) * 0.07 + "s";
+      observer.observe(el);
+    });
+  }
+
+  /* ------------------------------------------------------------------
+   * CAREERS FORM (careers.html) — technician application, demo mode
+   * ------------------------------------------------------------------ */
+  function initCareersForm() {
+    var form = document.getElementById("careers-form");
+    if (!form) return;
+    var statusEl = document.getElementById("careers-status");
+
+    function showStatus(message, type) {
+      statusEl.textContent = message;
+      statusEl.className = "form-status is-visible is-" + type;
+    }
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      var honeypot = document.getElementById("c-website");
+      if (honeypot && honeypot.value) {
+        showStatus("Thank you. Your application has been received.", "success");
+        form.reset();
+        return;
+      }
+
+      var name = document.getElementById("c-name").value.trim();
+      var phone = document.getElementById("c-phone").value.trim();
+      var cityState = document.getElementById("c-city").value.trim();
+      var experience = document.getElementById("c-experience").value;
+      var consent = document.getElementById("c-privacy").checked;
+
+      if (name.length < 2 || !/^[\d\s()+.-]{7,20}$/.test(phone) || cityState.length < 2 || !experience || !consent) {
+        showStatus("Please fill in your name, a valid phone number, city, experience level and accept the Privacy Policy.", "error");
+        return;
+      }
+
+      var specialties = [];
+      form.querySelectorAll('input[name="specialty"]:checked').forEach(function (cb) {
+        specialties.push(cb.value);
+      });
+
+      var payload = {
+        name: name,
+        phone: phone,
+        email: document.getElementById("c-email").value.trim(),
+        cityState: cityState,
+        zip: document.getElementById("c-zip").value.trim(),
+        experience: experience,
+        specialties: specialties,
+        ownToolsVehicle: document.getElementById("c-tools").checked,
+        notes: document.getElementById("c-notes").value.trim(),
+        submittedAt: new Date().toISOString()
+      };
+
+      track("TechApplication", { experience: experience, specialtyCount: specialties.length });
+
+      if (!CFG.formEndpoint) {
+        // eslint-disable-next-line no-console
+        console.log("[DEMO CAREERS SUBMISSION] No formEndpoint configured. Payload:", payload);
+        showStatus("This is a demonstration form. No data was sent anywhere. In production this application would be delivered to " + (CFG.companyName || "the business") + ".", "info");
+        form.reset();
+        return;
+      }
+
+      fetch(CFG.formEndpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(Object.assign({ type: "tech_application" }, payload))
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error("Request failed");
+          showStatus("Thank you! Your application has been received. We'll be in touch soon.", "success");
+          form.reset();
+        })
+        .catch(function () {
+          showStatus("We couldn't submit your application. Please try again or call us directly.", "error");
+        });
+    });
+  }
+
+  /* ------------------------------------------------------------------
    * INIT
    * ------------------------------------------------------------------ */
   document.addEventListener("DOMContentLoaded", function () {
@@ -559,8 +797,12 @@
     initZipChecker();
     initBookingForm();
     initAccordion();
+    initHeroDemo();
+    initInstallBanner();
+    initReveal();
+    initCareersForm();
     loadAnalyticsScripts();
     initServiceWorker();
-    track("ViewContent", { page: "home" });
+    track("ViewContent", { page: document.body.getAttribute("data-page") || "home" });
   });
 })();

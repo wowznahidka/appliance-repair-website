@@ -23,6 +23,10 @@
 <meta name="theme-color" content="#14213D">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -49,6 +53,7 @@
         <li><a href="#service-area">Service Area</a></li>
         <li><a href="#warranty">Warranty Claims</a></li>
         <li><a href="#faq">FAQ</a></li>
+        <li><a href="careers.html">Careers</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -71,6 +76,7 @@
       <li><a href="#service-area">Service Area</a></li>
       <li><a href="#warranty">Warranty Claims</a></li>
       <li><a href="#faq">FAQ</a></li>
+      <li><a href="careers.html">Careers</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="tel:" class="mobile-call-link">Call Now</a></li>
     </ul>
@@ -81,46 +87,88 @@
 
   <!-- ================= HERO ================= -->
   <section class="hero">
+    <div class="hero-glow" aria-hidden="true"></div>
     <div class="container hero-inner">
       <div class="hero-copy">
-        <h1>Appliance Repair in Your Area</h1>
-        <p class="hero-sub">Request service for refrigerators, washers, dryers, dishwashers, ovens and other household appliances. Service availability is confirmed based on your ZIP code.</p>
+        <p class="hero-eyebrow">Refrigerators · Washers · Dryers · Ovens · Dishwashers</p>
+        <h1>Appliance Repair,<br>Booked Online in <span class="accent-text">60 Seconds</span></h1>
+        <p class="hero-sub">Tell us your ZIP code and what broke — we take it from there. Attach a photo of the problem so the technician arrives prepared.</p>
         <div class="hero-actions">
           <a href="#booking" class="btn btn-accent btn-lg" data-track="Schedule">Book a Service</a>
           <a href="tel:" class="btn btn-outline-light btn-lg call-link" data-track="PhoneClick">Call Now</a>
         </div>
         <ul class="hero-benefits">
-          <li>Convenient online service request</li>
           <li>ZIP-code based availability check</li>
-          <li>Warranty claim information accepted</li>
-          <li>Phone and online booking</li>
+          <li>Photo diagnostics before the visit</li>
+          <li>Home warranty claims accepted</li>
+          <li>Works like an app — no download needed</li>
         </ul>
       </div>
-      <div class="hero-art" aria-hidden="true">
-        <svg viewBox="0 0 420 420" width="100%" height="100%">
-          <defs>
-            <linearGradient id="heroGrad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#1E3A5F"/>
-              <stop offset="1" stop-color="#14213D"/>
-            </linearGradient>
-          </defs>
-          <circle cx="210" cy="210" r="190" fill="url(#heroGrad)"/>
-          <!-- Fridge -->
-          <rect x="70" y="90" width="110" height="220" rx="10" fill="#F8F9FB"/>
-          <rect x="70" y="90" width="110" height="70" rx="10" fill="#EDEFF4"/>
-          <rect x="150" y="105" width="8" height="35" rx="4" fill="#14213D"/>
-          <rect x="150" y="180" width="8" height="90" rx="4" fill="#14213D"/>
-          <!-- Washer -->
-          <rect x="220" y="180" width="130" height="130" rx="10" fill="#F8F9FB"/>
-          <circle cx="285" cy="248" r="42" fill="none" stroke="#14213D" stroke-width="6"/>
-          <circle cx="285" cy="248" r="26" fill="none" stroke="#FF6B35" stroke-width="5"/>
-          <rect x="230" y="192" width="14" height="8" rx="2" fill="#14213D"/>
-          <rect x="252" y="192" width="14" height="8" rx="2" fill="#14213D"/>
-          <!-- Technician wrench badge -->
-          <circle cx="322" cy="120" r="34" fill="#FF6B35"/>
-          <path d="M310 108a10 10 0 0114 14l-24 24-8-8 22-22a10 10 0 00-4-8z" fill="#14213D"/>
-          <circle cx="308" cy="130" r="4" fill="#14213D"/>
-        </svg>
+
+      <!-- Live app demo: a phone that books a repair by itself -->
+      <div class="hero-demo" aria-hidden="true">
+        <div class="phone">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="demo-toast" id="demo-toast">
+              <span class="demo-toast-icon">✓</span>
+              <span>Request received — we're on it!</span>
+            </div>
+
+            <div class="demo-screen demo-screen-1 active" data-demo="1">
+              <p class="demo-title">Check your area</p>
+              <div class="demo-zip-box"><span id="demo-zip-text"></span><span class="demo-caret"></span></div>
+              <div class="demo-zip-ok" id="demo-zip-ok">✓ Service available in your area</div>
+            </div>
+
+            <div class="demo-screen demo-screen-2" data-demo="2">
+              <p class="demo-title">What needs repair?</p>
+              <div class="demo-appliances">
+                <div class="demo-app" data-app="1">
+                  <svg viewBox="0 0 48 48"><rect x="10" y="4" width="28" height="40" rx="4" fill="none" stroke="currentColor" stroke-width="2.5"/><line x1="10" y1="20" x2="38" y2="20" stroke="currentColor" stroke-width="2.5"/></svg>
+                  <span>Fridge</span>
+                </div>
+                <div class="demo-app" data-app="2">
+                  <svg viewBox="0 0 48 48"><rect x="8" y="6" width="32" height="36" rx="4" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="26" r="10" fill="none" stroke="currentColor" stroke-width="2.5"/></svg>
+                  <span>Washer</span>
+                </div>
+                <div class="demo-app" data-app="3">
+                  <svg viewBox="0 0 48 48"><rect x="6" y="8" width="36" height="32" rx="4" fill="none" stroke="currentColor" stroke-width="2.5"/><rect x="12" y="14" width="24" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+                  <span>Oven</span>
+                </div>
+                <div class="demo-app" data-app="4">
+                  <svg viewBox="0 0 48 48"><rect x="8" y="4" width="32" height="40" rx="4" fill="none" stroke="currentColor" stroke-width="2.5"/><rect x="13" y="10" width="22" height="6" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+                  <span>Dishwasher</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="demo-screen demo-screen-3" data-demo="3">
+              <p class="demo-title">Almost done</p>
+              <div class="demo-line demo-line-1"><span class="demo-line-label">Phone</span><span class="demo-line-fill"></span></div>
+              <div class="demo-line demo-line-2"><span class="demo-line-label">Problem</span><span class="demo-line-fill"></span></div>
+              <div class="demo-photo"><span>📷 Photo attached</span></div>
+              <button type="button" class="demo-submit" tabindex="-1">Submit Request</button>
+            </div>
+
+            <div class="demo-screen demo-screen-4" data-demo="4">
+              <div class="demo-success-check">
+                <svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24" fill="none" stroke="currentColor" stroke-width="3"/><path d="M15 27l7 7 15-16" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <p class="demo-success-title">Request received!</p>
+              <p class="demo-success-sub">We'll text you the appointment window shortly.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="hero-stats" id="hero-stats">
+        <div class="hero-stat"><span class="hero-stat-num" id="stat-states">5</span><span class="hero-stat-label">states covered</span></div>
+        <div class="hero-stat"><span class="hero-stat-num">8+</span><span class="hero-stat-label">appliance types</span></div>
+        <div class="hero-stat"><span class="hero-stat-num">60s</span><span class="hero-stat-label">to book online</span></div>
+        <div class="hero-stat"><span class="hero-stat-num">24/7</span><span class="hero-stat-label">online booking</span></div>
       </div>
     </div>
   </section>
@@ -139,6 +187,43 @@
           </div>
           <div id="zip-result" class="zip-result" aria-live="polite"></div>
         </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WHY US ================= -->
+  <section class="why-us" id="why-us">
+    <div class="container">
+      <h2 class="section-title">Built for Busy Homeowners</h2>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><rect x="10" y="4" width="28" height="40" rx="6" fill="none" stroke="currentColor" stroke-width="2.5"/><line x1="20" y1="38" x2="28" y2="38" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M18 20l4 4 8-9" fill="none" stroke="#FF6B35" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Works Like an App</h3>
+          <p>Add this site to your home screen in one tap — no App Store, no downloads. Book repairs like ordering a ride.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><rect x="8" y="10" width="32" height="26" rx="4" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="23" r="7" fill="none" stroke="#FF6B35" stroke-width="2.5"/><rect x="19" y="6" width="10" height="6" rx="2" fill="none" stroke="currentColor" stroke-width="2.5"/></svg>
+          </div>
+          <h3>Photo Diagnostics</h3>
+          <p>Attach photos of the problem with your request. The technician arrives knowing what to expect — and what parts to bring.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><path d="M24 4l16 6v12c0 12-7 20-16 22C15 42 8 34 8 22V10z" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M17 23l5 5 9-10" fill="none" stroke="#FF6B35" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Warranty-Claim Friendly</h3>
+          <p>Have a home warranty or insurance plan? Include your provider and claim number right in the request form.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="19" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M24 13v11l8 5" fill="none" stroke="#FF6B35" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Book Any Time</h3>
+          <p>The request form works 24/7. Submit at midnight, get a confirmation call in business hours — your spot is already in line.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -532,6 +617,24 @@
     </div>
   </section>
 
+  <!-- ================= CAREERS TEASER ================= -->
+  <section class="careers-teaser" id="careers">
+    <div class="container careers-teaser-inner">
+      <div class="careers-copy">
+        <p class="careers-eyebrow">We're growing</p>
+        <h2>Appliance Repair Technicians — Join the Team</h2>
+        <p>Experienced with refrigerators, washers or ovens? We partner with skilled technicians across our service area. Flexible engagement — work with us or build your own book of business.</p>
+        <a href="careers.html" class="btn btn-accent btn-lg">Apply as a Technician</a>
+      </div>
+      <div class="careers-art" aria-hidden="true">
+        <svg viewBox="0 0 200 200" width="100%" height="100%">
+          <circle cx="100" cy="100" r="90" fill="rgba(255,107,53,0.12)"/>
+          <path d="M126 62a26 26 0 00-34 34L58 130a12 12 0 0017 17l34-34a26 26 0 0034-34l-16 16-14-3-3-14z" fill="none" stroke="#FF6B35" stroke-width="5" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
   <!-- ================= FINAL CTA ================= -->
   <section class="final-cta">
     <div class="container final-cta-inner">
@@ -560,7 +663,8 @@
       <div id="footer-hours"></div>
     </div>
     <div class="footer-col">
-      <h3>Legal</h3>
+      <h3>Company</h3>
+      <p><a href="careers.html">Careers — We're Hiring</a></p>
       <p><a href="privacy.html">Privacy Policy</a></p>
       <p><a href="terms.html">Terms</a></p>
     </div>
@@ -569,6 +673,23 @@
     <p>This website is for informational purposes and to collect appliance repair service requests. Service availability, scheduling, pricing and warranty/insurance coverage are subject to confirmation. This business is not represented as an official partner, licensee or authorized center of any warranty or insurance provider unless separately and explicitly confirmed.</p>
   </div>
 </footer>
+
+<!-- PWA install banner (shown by script.js when installable) -->
+<div class="install-banner" id="install-banner" hidden>
+  <div class="install-banner-card">
+    <div class="install-banner-icon" aria-hidden="true">
+      <svg viewBox="0 0 64 64" width="44" height="44"><rect width="64" height="64" rx="14" fill="#14213D"/><rect x="16" y="10" width="32" height="44" rx="4" fill="none" stroke="#FF6B35" stroke-width="3"/><circle cx="32" cy="22" r="4" fill="#FF6B35"/><line x1="20" y1="36" x2="44" y2="36" stroke="#FF6B35" stroke-width="3"/><line x1="20" y1="44" x2="44" y2="44" stroke="#FF6B35" stroke-width="3"/></svg>
+    </div>
+    <div class="install-banner-text">
+      <strong id="install-banner-title">Get the app experience</strong>
+      <span id="install-banner-sub">Add to your home screen — book repairs in one tap, no download.</span>
+    </div>
+    <div class="install-banner-actions">
+      <button type="button" class="btn btn-accent" id="install-banner-btn">Install</button>
+      <button type="button" class="install-banner-dismiss" id="install-banner-dismiss" aria-label="Dismiss">✕</button>
+    </div>
+  </div>
+</div>
 
 <!-- Mobile sticky action bar -->
 <div class="mobile-sticky-bar" id="mobile-sticky-bar">
