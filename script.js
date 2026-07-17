@@ -509,9 +509,11 @@
         return;
       }
 
+      // text/plain avoids a CORS preflight, which Apps Script endpoints
+      // cannot answer; the bridge parses the JSON body regardless.
       fetch(CFG.formEndpoint, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify(requestData)
       })
         .then(function (res) {
@@ -773,7 +775,7 @@
 
       fetch(CFG.formEndpoint, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify(Object.assign({ type: "tech_application" }, payload))
       })
         .then(function (res) {

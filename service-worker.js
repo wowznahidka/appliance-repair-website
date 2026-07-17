@@ -4,7 +4,7 @@
  * static assets, network passthrough for everything else (e.g. form
  * submissions, analytics, external scripts).
  */
-var CACHE_NAME = "appliance-repair-demo-v2";
+var CACHE_NAME = "appliance-repair-demo-v3";
 var PRECACHE_URLS = [
   "./",
   "./index.html",
@@ -65,6 +65,38 @@ self.addEventListener("fetch", function (event) {
           return cached;
         });
       return cached || networkFetch;
+    })
+  );
+});
+
+/* ---------------------------------------------------------------------------
+ * WEB PUSH (ready for Stage 2)
+ * These handlers make the PWA display push notifications as soon as a push
+ * backend (VAPID keys + subscription storage) is connected. Until then they
+ * simply never fire — zero cost, zero risk.
+ * ------------------------------------------------------------------------- */
+self.addEventListener("push", function (event) {
+  var data = {};
+  try { data = event.data ? event.data.json() : {}; } catch (e) { data = { body: event.data && event.data.text() }; }
+  var title = data.title || "Appliance Repair";
+  var options = {
+    body: data.body || "You have an update on your service request.",
+    icon: "icons/icon-192.png",
+    badge: "icons/icon-192.png",
+    data: { url: data.url || "./" }
+  };
+  event.waitUntil(self.registration.showNotification(title, options));
+});
+
+self.addEventListener("notificationclick", function (event) {
+  event.notification.close();
+  var url = (event.notification.data && event.notification.data.url) || "./";
+  event.waitUntil(
+    clients.matchAll({ type: "window", includeUncontrolled: true }).then(function (list) {
+      for (var i = 0; i < list.length; i++) {
+        if ("focus" in list[i]) { list[i].navigate(url); return list[i].focus(); }
+      }
+      return clients.openWindow(url);
     })
   );
 });
